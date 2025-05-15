@@ -3,72 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Homepage</title>
+    <title>Yue Ma - Experimental Physicist Extraordinaire</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- MathJax Configuration -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <!-- Load MathJax -->
+    <script 
+      type="text/javascript" 
+      id="MathJax-script" 
+      async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="publications.html">Publications</a></li>
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="cv.html">CV</a>
+                </li>
+                <li>
+                    <a href="research.html">Research</a>
+                </li>
+                <li>
+                    <a href="publications.html">Publications</a>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="profile">
+        <section id="hero">
             <div class="profile-image">
-                <img src="assets/images/profile.jpg" alt="Your Name">
+                <!-- <img src="IMG_5067.jpeg" alt="Yue Ma"> -->
             </div>
-            <div class="profile-content">
-                <h1>Your Name</h1>
-                <p>Your Title / Position</p>
-                <p>Your Institution</p>
+            <div class="intro-text">
+                <h1>Yue Ma</h1>
+                <h2>Experimental Physicist (and occasional coffee enthusiast)</h2>
+                <p>Senior Research Scientist, RIKEN, Japan</p>
                 <p>
-                    Brief professional bio (2-3 sentences about your research focus,
-                    expertise, and current position).
+                    I am an experimental physicist specializing in nuclear and particle physics, 
+                    with extensive experience at facilities like 
+                    J-PARC, SPring-8 and KEK. My work explores the frontiers of elementary particles 
+                    such as antimatter interactions, and hypernuclear systems, contributing to
+                    discoveries such as the <span class="math inline">$\mathrm{K}^{-} \mathrm{pp}$</span> 
+                    bound state and advancements in hypertriton lifetime studies. 
+                    (Yes, I know it sounds fancy.)
                 </p>
-                <p>
-                    <a href="mailto:your.email@example.com">Email</a> |
-                    <a href="https://github.com/yourusername">GitHub</a> |
-                    <a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a>
-                </p>
+                <div class="contact-links">
+                    <a href="mailto:y.ma@riken.jp">Email Me (I promise I’ll reply)</a> |
+                    <a href="https://github.com/ymaphys">GitHub (   where the magic happens)</a> |
+                </div>
             </div>
         </section>
-
-        <section>
-            <h2>Research Interests</h2>
-            <p>Brief overview of your research interests and focus areas.</p>
-            <pre><code>Research Area 1: Brief description
-Research Area 2: Brief description
-Research Area 3: Brief description</code></pre>
-            <p><a href="research.html">More details →</a></p>
-        </section>
-
-        <section>
-            <h2>Recent Publications</h2>
-            <ul class="publication-list">
+        
+        <section id="research-interests">
+            <h2>Research Interests (a.k.a. Things I Geek Out About)</h2>
+            <p>
+                My research centers on understanding fundamental interactions in nuclear and particle 
+                physics through experimental approaches. Key focus areas include:
+            </p>
+            <ul>
                 <li>
-                    <p class="publication-title">Your Publication Title</p>
-                    <p>Authors, including <strong>Your Name</strong></p>
-                    <p>Journal/Conference, Year</p>
-                    <p>
-                        <a href="#" target="_blank">PDF</a> |
-                        <a href="#" target="_blank">DOI</a> |
-                        <a href="#" target="_blank">Code</a>
-                    </p>
+                    <strong>Hypernuclear Physics:</strong> Investigating Λ hypernuclei and their 
+                    interactions to probe baryon-baryon forces and exotic nuclear structures. 
+                    (Basically, I play with strange particles.)
                 </li>
-                <!-- Add more publications as needed -->
+                <li>
+                    <strong>Kaon-related Studies:</strong> Exploring kaon-induced reactions and 
+                    exotic states like <span class="math inline">$\Lambda(1405)$</span> to study 
+                    strangeness in hadronic systems. (Yes, kaons are strange, literally.)
+                </li>
+                <li>
+                    <strong>Antimatter Interactions:</strong> If antimatter and matter collide,
+                    what happens? I’m on a quest to find out! (Spoiler: it’s not pretty.) 
+                </li>
             </ul>
-            <p><a href="publications.html">All publications →</a></p>
+            <a href="research.html">Learn more → (if you dare)</a>
+        </section>
+        
+        <section id="recent-publications">
+            <h2>Recent Publications (Proof I Actually Do Stuff)</h2>
+            <a href="publications.html">View all publications → (if you’re not bored yet)</a>
+        </section>
+
+        <section id="phase-space-calculation">
+            <h2>Phase Space Calculation (Math Nerd Alert)</h2>
+            <p>
+                The following C++ function calculates the phase space normalization factor 
+                that allows you to convert the relative weigths of TGenPhaseSpace into absolute
+                phase space integral weights. (Yes, now you can perform phase space integrals 
+                for multiple particles without losing your mind.)
+            </p>
+            <pre>
+<code class="language-cpp">
+// Calculate the phase space normalization factor
+Double_t CalculatePhaseSpaceFactor(Int_t numParticles, Double_t availableEnergy, Double_t parentMass)
+{
+    if (numParticles < 2 || availableEnergy <= 0.0 || parentMass <= 0.0)
+    {
+        std::cerr << "Error: Invalid parameters for phase space calculation" << std::endl;
+        return 0.0; // Because bad inputs deserve nothing
+    }
+
+    double piPower = numParticles;            // Pi factor for each particle (π is everywhere)
+    double twoPiCubePower = numParticles - 1; // (2π)³ divisor for each particle
+    double teCmTmPower = numParticles - 2;    // availableEnergy factor for intermediate states
+
+    double factor = 2 * pow(TMath::Pi(), piPower) /
+                    pow(2.0 * TMath::Pi(), 3 * twoPiCubePower) *
+                    pow(2.0 * availableEnergy, teCmTmPower) /
+                    parentMass;
+
+    if (numParticles > 2)
+    {
+        factor /= double(factorial(numParticles - 2)); // Divide by factorial because math says so
+    }
+
+    return factor; // Voilà, your phase space factor
+}
+</code>
+            </pre>
         </section>
     </main>
 
     <footer>
-        <p>© <span id="year"></span> Your Name. Last updated: May 2025.</p>
+        <p>
+            &copy; 2025 Yue Ma. Last updated: May 14, 2025. 
+            (Yes, I remembered to update this.)
+        </p>
     </footer>
 
     <script src="assets/js/script.js"></script>

@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Your Name</title>
+    <title>Research - Yue Ma</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+
+    <!-- Load MathJax -->
+    <script 
+      type="text/javascript" 
+      id="MathJax-script" 
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 <body>
     <header>
@@ -21,26 +41,101 @@
 
     <main>
         <h1>Research</h1>
-        <section>
-            <h2>Research Area 1</h2>
-            <p>Detailed description of your research area or project.</p>
+        
+        <section id="hypernuclear-physics">
+            <h2>Hypernuclear Physics (Strange Particles, Literally)</h2>
+            <p>
+                Ever wondered what happens when you throw a hyperon into a nucleus? Me too! 
+                My research dives into the weird and wonderful world of hypernuclear physics, 
+                where baryons get strange (pun intended). Highlights include:
+            </p>
+            <ul>
+                <li>
+                    Discovering five new γ-ray transitions from 
+                    <span class="math inline">${}_{\Lambda}^{12}\mathrm{C}$</span> and 
+                    <span class="math inline">${}_{\Lambda}^{11}\mathrm{B}$</span> hypernuclei 
+                    during my Ph.D. (2004-2009). Yes, I was that grad student who actually found 
+                    something new.
+                </li>
+                <li>
+                    Working on the J-PARC E73 experiment (2018-present) to solve said puzzle 
+                    with world-class precision. (Take that, mysteries of the universe!)
+                </li>
+            </ul>
+        </section>
+        
+        <section id="kaon-related-hadron-physics">
+            <h2>Kaon-related Hadron Physics</h2>
+            <p>
+                Kaons are like the quirky cousins of the particle family. My work explores their 
+                interactions and exotic states, revealing the secrets of strangeness in nuclear 
+                matter. Key moments include:
+            </p>
+            <ul>
+                <li>
+                    Confirming the <span class="math inline">$\mathrm{K}^{-} \mathrm{pp}$</span> 
+                    bound state in the J-PARC E15 experiment. (Yes, it exists. You're welcome.)
+                </li>
+                <li>
+                    Spotting <span class="math inline">$\Lambda \pi^{\pm}$</span> signals near the 
+                    <span class="math inline">$\bar{K}N$</span> threshold at Belle. 
+                    (Hyperon spectroscopy, anyone?)
+                </li>
+            </ul>
+        </section>
+        
+        <section id="antideuteron-experiment">
+            <h2>Antideuteron Experiment (Antimatter Adventures)</h2>
+            <p>
+                What happens when you create and study antideuterons? (Hint: it’s not your average science experiment.) 
+                My research at J-PARC focuses on producing and analyzing antideuterons to probe fundamental symmetries 
+                and interactions in the universe. Highlights include:
+            </p>
+            <ul>
+                <li>
+                    Designing and optimizing experiment for the antideuteron annihilation reaction. 
+                    (Because antimatter isn’t exactly easy to come by.)
+                </li>
+                <li>
+                    Developing advanced detection techniques to identify annihilation products with high precision. 
+                    (Yes, we’re talking about separating them from a sea of other particles.)
+                </li>
+                <li>
+                    Investigating antideuteron annihilation scenario to explore baryon-antibaryon interactions. 
+                    (Because antimatter deserves its moment in the spotlight.)
+                </li>
+            </ul>
+        </section>
+        
+        <section id="technical-developments">
+            <h2>Technical Developments (True enjoyment!)</h2>
+            <p>
+                When I’m not unraveling the mysteries of the universe, I tinker with technology 
+                to make experiments better. Here are some of my proudest creations:
+            </p>
+            <ul>
+                <li>
+                    Proposing an energy-sensitive Muon Spin Resonance (muSR) spectrometer that 
+                    improves precision by 1.5x.
+                </li>
+                <li>
+                    Dreaming a waveform analysis method for drift chambers, achieving 40 μm 
+                    resolution in simulations. 
+                </li>
+                <li>
+                    Creating a streaming DAQ system for real-time data analysis and leading a 
+                    Plate Cherenkov detector project for particle identification. 
+                </li>
+            </ul>
         </section>
 
-        <section>
-            <h2>Research Area 2</h2>
-            <p>Detailed description of your research area or project.</p>
-        </section>
-
-        <section>
-            <h2>Research Area 3</h2>
-            <p>Detailed description of your research area or project.</p>
-        </section>
-
-        <!-- Add more research areas as needed -->
     </main>
 
     <footer>
-        <p>&copy; <span id="year"></span> Your Name. Last updated: <span id="last-update">May 2025</span>.</p>
+        <p>
+            &copy; 2025 Yue Ma. Last updated: May 14, 2025. 
+            (Yes, I remembered to update this too.)
+        </p>
     </footer>
 
     <script src="assets/js/script.js"></script>

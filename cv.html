@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Your Name</title>
+    <title>Curriculum Vitae - Yue Ma</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <!-- Load MathJax -->
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 <body>
     <header>
@@ -20,49 +36,82 @@
     </header>
 
     <main>
-        <h1>Curriculum Vitae</h1>
-        <p class="download-link"><a href="assets/files/YourName_CV.pdf" download><i class="fas fa-download"></i> Download PDF version</a></p>
+        <h1>Curriculum Vitae (a.k.a. My Life in Bullet Points)</h1>
         
-        <section>
-            <h2>Education</h2>
-            <ul class="cv-list">
+        <section id="education">
+            <h2>Education (Where I Learned Stuff)</h2>
+            <ul>
                 <li>
-                    <div class="cv-item">
-                        <div class="cv-date">20XX - Present</div>
-                        <div class="cv-content">
-                            <h3>Ph.D. in Your Field</h3>
-                            <p>University Name, Department</p>
-                            <p>Thesis: "Your Thesis Title"</p>
-                            <p>Advisor: Prof. Advisor Name</p>
-                        </div>
-                    </div>
+                    <strong>1998 - 2002</strong><br>
+                    B.S. in Nuclear Physics<br>
+                    Lanzhou University, China<br>
                 </li>
-                <!-- Add more education items -->
+                <li>
+                    <strong>2004 - 2006</strong><br>
+                    M.S. in Physical Science<br>
+                    Tohoku University, Japan<br>
+                </li>
+                <li>
+                    <strong>2006 - 2009</strong><br>
+                    Ph.D. in Physics<br>
+                    Tohoku University, Japan<br>
+                    (Earned the right to be called "Doctor" and confuse airport staff.)
+                </li>
             </ul>
         </section>
-
-        <section>
-            <h2>Research Experience</h2>
-            <ul class="cv-list">
+        
+        <section id="professional-appointments">
+            <h2>Professional Appointments (Where I Did Cool Stuff)</h2>
+            <ul>
                 <li>
-                    <div class="cv-item">
-                        <div class="cv-date">20XX - Present</div>
-                        <div class="cv-content">
-                            <h3>Research Position Title</h3>
-                            <p>Institution or Laboratory</p>
-                            <p>Description of your research work and responsibilities.</p>
-                        </div>
-                    </div>
+                    <strong>2012 - Present</strong><br>
+                    Senior Research Scientist, Meson Science Laboratory, RIKEN, Japan<br>
                 </li>
-                <!-- Add more research experience items -->
+                <li>
+                    <strong>2009 - 2012</strong><br>
+                    Postdoctoral Researcher, Helmholtz-Institut Mainz, Germany<br>
+                </li>
+                <li>
+                    <strong>2002 - 2004</strong><br>
+                    Research Assistant, Institute of Modern Physics, China<br>
+                </li>
             </ul>
         </section>
-
-        <!-- Add additional sections as needed: Teaching, Awards, Skills, etc. -->
+        
+        <section id="teaching-mentorship">
+            <h2>Teaching (Passing the Torch)</h2>
+            <ul>
+                <li>
+                    <strong>2019 and 2024</strong><br>
+                    Invited Lecturer for Hadron Physics, Chinese Academy of Sciences<br>
+                    (Taught Hadron Physics to grad students. They survived. Barely.)
+                </li>
+            </ul>
+        </section>
+        
+        <section id="grants-fellowships">
+            <h2>Grants and Fellowships (Show Me the Money!)</h2>
+            <ul>
+                <li>
+                    <strong>2017 - 2020</strong><br>
+                    JSPS Grant-in-Aid for Young Scientists<br>
+                    Aimed to solve the hypertriton lifetime puzzle.
+                </li>
+            </ul>
+        </section>
+                
+        <section id="languages">
+            <h2>Languages (How I Communicate)</h2>
+            <ul>
+                <li>Chinese: Native (Born with it.)</li>
+                <li>English: Fluent (Can write papers and order coffee.)</li>
+                <li>Japanese: Proficient (12+ years in Japan. Enough said.)</li>
+            </ul>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; <span id="year"></span> Your Name. Last updated: <span id="last-update">May 2025</span>.</p>
+        <p>&copy; 2025 Yue Ma. Last updated: May 14, 2025. (Yes, I remembered to update this.)</p>
     </footer>
 
     <script src="assets/js/script.js"></script>
