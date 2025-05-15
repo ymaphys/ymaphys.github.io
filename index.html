@@ -65,14 +65,13 @@
                     (Yes, I know it sounds fancy.)
                 </p>
                 <div class="contact-links">
-                    <a href="mailto:y.ma@riken.jp">Email Me (I promise I’ll reply)</a> |
-                    <a href="https://github.com/ymaphys">GitHub (   where the magic happens)</a> |
+                    <a href="mailto:y.ma_at_riken.jp">Email Me (replace _at_ with proper one)</a> |
                 </div>
             </div>
         </section>
         
         <section id="research-interests">
-            <h2>Research Interests (a.k.a. Things I Geek Out About)</h2>
+            <h2>Research Interests</h2>
             <p>
                 My research centers on understanding fundamental interactions in nuclear and particle 
                 physics through experimental approaches. Key focus areas include:
@@ -90,25 +89,42 @@
                 </li>
                 <li>
                     <strong>Antimatter Interactions:</strong> If antimatter and matter collide,
-                    what happens? I’m on a quest to find out! (Spoiler: it’s not pretty.) 
+                    what happens? I'm on a quest to find out! (Spoiler: it's not pretty.) 
                 </li>
             </ul>
-            <a href="research.html">Learn more → (if you dare)</a>
+            <a href="research.html">Learn more → (are you serious?)</a>
         </section>
         
         <section id="recent-publications">
             <h2>Recent Publications (Proof I Actually Do Stuff)</h2>
-            <a href="publications.html">View all publications → (if you’re not bored yet)</a>
+            <a href="publications.html">View all publications → (if you're not bored yet)</a>
         </section>
 
         <section id="phase-space-calculation">
-            <h2>Phase Space Calculation (Math Nerd Alert)</h2>
+            <h2>Phase Space Calculation</h2>
             <p>
                 The following C++ function calculates the phase space normalization factor 
-                that allows you to convert the relative weigths of TGenPhaseSpace into absolute
+                that allows you to convert the relative weights of TGenPhaseSpace into absolute
                 phase space integral weights. (Yes, now you can perform phase space integrals 
                 for multiple particles without losing your mind.)
             </p>
+
+            <!-- Inserted Math Expression -->
+            <p>
+                The formula for the phase space normalization factor is:
+            </p>
+            <p>
+                <span class="math display">
+                \[
+                \text{factor} = 
+                \begin{cases} 
+                0 & \text{if } n < 2 \text{ or } E \leq 0 \text{ or } M \leq 0 \\
+                \frac{2 \pi^{n} (2E)^{n-2}}{(2\pi)^{3(n-1)} M (n-2)!} & \text{if } n \geq 2 
+                \end{cases}
+                \]
+                </span>
+            </p>
+
             <pre>
 <code class="language-cpp">
 // Calculate the phase space normalization factor
