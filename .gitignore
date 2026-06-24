@@ -1,0 +1,8 @@
+# Editor / OS cruft
+.history/
+.DS_Store
+Thumbs.db
+
+# Local backups / archives
+*.tgz
+*.zip

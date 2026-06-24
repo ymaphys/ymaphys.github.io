@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Yue Ma</title>
+    <title>Curriculum Vitae &mdash; Yue Ma</title>
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- MathJax Configuration -->
     <script>
       MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: {
-          fontCache: 'global'
-        }
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+        svg: { fontCache: 'global' }
       };
     </script>
-    <!-- Load MathJax -->
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
     <header>
@@ -37,81 +28,101 @@
 
     <main>
         <h1>Curriculum Vitae</h1>
-        
+        <p class="links"><a class="btn" href="assets/pdf/Ma_Yue_CV.pdf">&#8681; Download CV (PDF)</a></p>
+
+        <section id="profile">
+            <h2>Profile</h2>
+            <p>
+                Experimental nuclear physicist and Senior Research Scientist (permanent) at RIKEN, with more than
+                fifteen years of front-line research and leadership at international facilities in Japan and Germany
+                (J-PARC, SPring-8, KEK, GSI, DESY). I currently hold leading roles in three international experiments &mdash;
+                experiment spokesperson of J-PARC E73 (hypertriton lifetime) and proposal spokesperson of SPring-8 LEPS2
+                (nucleon short-range correlations) and the J-PARC antideuteron experiment. I made leading contributions to
+                the discovery of the K⁻pp (K̄NN) bound state and to the precise ⁴ΛH hypernuclear lifetime measurement, and
+                I am first author of the first observation of a Λπ structure near the K̄N(I=1) threshold at Belle. I have
+                deep, partly original expertise in electromagnetic calorimetry, TES cryogenic microcalorimeters,
+                ultra-high-resolution tracking and streaming data acquisition. I worked at the Institute of Modern Physics
+                (CAS) in 2002&ndash;2004 and read for my undergraduate degree at Lanzhou University.
+            </p>
+        </section>
+
+        <section id="leadership">
+            <h2>Academic Leadership &amp; Spokesperson Roles</h2>
+            <ul>
+                <li><strong>J-PARC E73</strong> &mdash; hypertriton lifetime &mdash; <span class="role-inline">Experiment spokesperson</span>.
+                    Beam time completed; ⁴ΛH lifetime and ³,⁴ΛH production cross sections published; ³ΛH lifetime analysis ongoing.</li>
+                <li><strong>SPring-8 LEPS2</strong> &mdash; nucleon short-range correlations with the Λ hyperon as a probe &mdash;
+                    <span class="role-inline">Proposal spokesperson</span> (ongoing).</li>
+                <li><strong>J-PARC antideuteron experiment</strong> &mdash; antideuteron&ndash;nucleus interaction and annihilation
+                    mechanism &mdash; <span class="role-inline">Proposal spokesperson</span> (ongoing).</li>
+            </ul>
+        </section>
+
+        <section id="achievements">
+            <h2>Signature Achievements</h2>
+            <ul>
+                <li><strong>Discovery of the K⁻pp (K̄NN) kaonic nuclear bound state.</strong> As a founding member of J-PARC E15,
+                    developed the multi-hit TDC system and extracted the signal by polarization analysis, giving the first
+                    evidence for a deeply bound K⁻pp state. <span class="pub-meta">Phys. Lett. B 789 (2019); Phys. Rev. C 102 (2020).</span></li>
+                <li><strong>Precise measurement of the ⁴ΛH hypernuclear lifetime.</strong> As spokesperson and corresponding author,
+                    proposed the key idea of tagging fast π⁰ with a single high-energy γ and led the measurement,
+                    $\tau = 206 \pm 8 \pm 12$ ps (J-PARC E73). <span class="pub-meta">Phys. Lett. B 845 (2023).</span></li>
+                <li><strong>First observation of a Λπ structure near the K̄N(I=1) threshold.</strong> As first author, led the Belle
+                    data analysis. <span class="pub-meta">Phys. Rev. Lett. 130 (2023).</span></li>
+                <li><strong>First application of TES microcalorimeters to hadronic-atom spectroscopy.</strong> Implemented the SDD
+                    data analysis and energy calibration at sub-eV precision (J-PARC E62).
+                    <span class="pub-meta">Prog. Theor. Exp. Phys. 2016, 091D01; Phys. Rev. Lett. 128 (2022).</span></li>
+            </ul>
+        </section>
+
         <section id="education">
             <h2>Education</h2>
-            <ul>
-                <li>
-                    <strong>1998 - 2002</strong><br>
-                    B.S. in Nuclear Physics<br>
-                    Lanzhou University, China<br>
-                </li>
-                <li>
-                    <strong>2004 - 2006</strong><br>
-                    M.S. in Physical Science<br>
-                    Tohoku University, Japan<br>
-                </li>
-                <li>
-                    <strong>2006 - 2009</strong><br>
-                    Ph.D. in Physics<br>
-                    Tohoku University, Japan<br>
-                    (Earned the right to be called "Doctor" and confuse airport staff.)
-                </li>
-            </ul>
+            <div class="cv-entry"><span class="cv-date">2006&ndash;2009</span> &mdash; Doctor of Science (Physics), Tohoku University, Sendai, Japan</div>
+            <div class="cv-entry"><span class="cv-date">2004&ndash;2006</span> &mdash; M.S. in Physical Science, Tohoku University, Sendai, Japan</div>
+            <div class="cv-entry"><span class="cv-date">1998&ndash;2002</span> &mdash; B.S. in Nuclear Physics, Lanzhou University, China</div>
         </section>
-        
-        <section id="professional-appointments">
+
+        <section id="appointments">
             <h2>Professional Appointments</h2>
-            <ul>
-                <li>
-                    <strong>2012 - Present</strong><br>
-                    Senior Research Scientist, Meson Science Laboratory, RIKEN, Japan<br>
-                </li>
-                <li>
-                    <strong>2009 - 2012</strong><br>
-                    Postdoctoral Researcher, Helmholtz-Institut Mainz, Germany<br>
-                </li>
-                <li>
-                    <strong>2002 - 2004</strong><br>
-                    Research Assistant, Institute of Modern Physics, China<br>
-                </li>
-            </ul>
+            <div class="cv-entry"><span class="cv-date">2012&ndash;present</span> &mdash; Senior Research Scientist (permanent), Few-body Systems Physics Laboratory, RIKEN, Japan</div>
+            <div class="cv-entry"><span class="cv-date">2009&ndash;2012</span> &mdash; Postdoctoral Researcher, Helmholtz Institute Mainz, Germany</div>
+            <div class="cv-entry"><span class="cv-date">2002&ndash;2004</span> &mdash; Research Trainee, Institute of Modern Physics, Chinese Academy of Sciences, China</div>
         </section>
-        
-        <section id="teaching-mentorship">
-            <h2>Teaching (Passing the Torch)</h2>
-            <ul>
-                <li>
-                    <strong>2019 and 2024</strong><br>
-                    Invited Lecturer for Hadron Physics, Chinese Academy of Sciences<br>
-                    (Taught Hadron Physics to grad students. They survived. Barely.)
-                </li>
-            </ul>
+
+        <section id="grants">
+            <h2>Grants and Fellowships</h2>
+            <div class="cv-entry"><span class="cv-date">2026&ndash;2027</span> &mdash; Grant-in-Aid for Transformative Research Areas (A), Publicly Offered Research: search for a Σ-hypertriton (³ΣH) bound state at J-PARC (within E. Hiyama's research area). <span class="role-inline">Principal investigator</span></div>
+            <div class="cv-entry"><span class="cv-date">2024&ndash;2028</span> &mdash; Grant-in-Aid for Scientific Research (A): ρ-meson mass modification in nuclei with photon beams. Co-investigator</div>
+            <div class="cv-entry"><span class="cv-date">2023&ndash;2025</span> &mdash; RIKEN Incentive Research Project: exploring matter&ndash;antimatter interactions. <span class="role-inline">Principal investigator</span></div>
+            <div class="cv-entry"><span class="cv-date">2017&ndash;2020</span> &mdash; JSPS Grant-in-Aid for Young Scientists (A) 17H04842: solving the hypertriton lifetime puzzle. <span class="role-inline">Principal investigator</span> (~24M JPY)</div>
         </section>
-        
-        <section id="grants-fellowships">
-            <h2>Grants and Fellowships (Rejected constantly)</h2>
-            <ul>
-                <li>
-                    <strong>2017 - 2020</strong><br>
-                    JSPS Grant-in-Aid for Young Scientists<br>
-                    Aimed to solve the hypertriton lifetime puzzle.
-                </li>
-            </ul>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <div class="cv-entry"><span class="cv-date">2018, 2023, 2024</span> &mdash; Invited lecturer, Hadron Physics summer course, University of Chinese Academy of Sciences</div>
         </section>
-                
+
+        <section id="supervision">
+            <h2>Student Supervision</h2>
+            <div class="cv-entry"><span class="cv-date">2017&ndash;2020</span> &mdash; C. Han (Ph.D.), University of Chinese Academy of Sciences</div>
+            <div class="cv-entry"><span class="cv-date">2012&ndash;2014</span> &mdash; Q. Zhang (Ph.D.), Lanzhou University</div>
+            <div class="cv-entry"><span class="cv-date">2010&ndash;2011</span> &mdash; D. Lin (Ph.D.); Christina and Pascal (M.S.), University of Mainz</div>
+        </section>
+
+        <section id="service">
+            <h2>Organization, Service &amp; Invited Talks</h2>
+            <div class="cv-entry"><span class="cv-date">2019&ndash;2021</span> &mdash; Member, RIKEN Scientists' Assembly Steering Committee; coordinator and chief coordinator, RIKEN Incentive Research Fund (Physics division)</div>
+            <div class="cv-entry"><span class="cv-date">2022 / 2025</span> &mdash; Invited talks, 14th &amp; 15th International Conference on Hypernuclear and Strange Particle Physics (HYP 2022, Prague; HYP 2025, Tokyo)</div>
+        </section>
+
         <section id="languages">
             <h2>Languages</h2>
-            <ul>
-                <li>Chinese: Native (Born with it.)</li>
-                <li>English: Fluent (Can write papers and order coffee.)</li>
-                <li>Japanese: Proficient (12+ years in Japan. Enough said.)</li>
-            </ul>
+            <p>Chinese (native) &middot; English (fluent) &middot; Japanese (professional working proficiency)</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Yue Ma. Last updated: May 14, 2025. (Yes, I remembered to update this.)</p>
+        <p>&copy; 2026 Yue Ma &middot; Last updated June 2026</p>
     </footer>
 
     <script src="assets/js/script.js"></script>
