@@ -12,7 +12,7 @@ files directly (no Jekyll, no Actions).
 | `index.html` | Home — bio, research interests, selected recent publications, a phase-space code snippet |
 | `cv.html` | CV (HTML, mirrors the PDF) + multi-language CV download buttons |
 | `research.html` | Research directions + detector development |
-| `publications.html` | **Generated** (see below) — Selected + grouped full list + multi-language PDF downloads |
+| `publications.html` | **Generated** (see below) — role-tagged grouped full list + multi-language PDF downloads |
 | `assets/css/style.css` | All styling. Key classes: `.btn`, `.role-tag`, `.pub-title`, `.pub-meta`, `.pub-note`, `.count`, `.publication-list`, `.cv-entry`, `.cv-date`, `.subtitle` |
 | `assets/js/script.js` | Minor JS |
 | `assets/pdf/` | The downloadable PDFs (see *Languages*) |
@@ -51,10 +51,11 @@ this site's Publications page** — Lead-author & major-contributor → Belle / 
 python3 tools/build_publications.py      # rewrites ../publications.html  (no deps beyond Python 3)
 ```
 
-Emitted structure: **Selected** (curated, role-tagged) → **Lead-author & major-contributor (10)** →
+Emitted structure: **Lead-author & major-contributor (10)** (role-tagged via the `ROLES` map; each entry
+also shows its experiment, e.g. J-PARC E73 / OLYMPUS, from the bib `collaboration` field) →
 **Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the full set lives in the PDF) →
 **Other journals (12)** → **Proceedings (27)**. The script cleans LaTeX titles to plain Unicode and
-converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `SELECTED`. Keep
+converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `ROLES`. Keep
 `tools/Ma_Yue_papers_only.bib` in sync with the master bib in the CV workspace.
 
 ## Update / deploy

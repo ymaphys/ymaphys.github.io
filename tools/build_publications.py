@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Generate homepage publications.html: Selected -> Lead-author -> Belle (digest) -> Other -> Proceedings.
+# Generate homepage publications.html: Lead-author (role-tagged) -> Belle (digest) -> Other -> Proceedings.
 import re, html, os
 _HERE = os.path.dirname(os.path.abspath(__file__))
 BIB = os.path.join(_HERE, "Ma_Yue_papers_only.bib")
@@ -87,13 +87,15 @@ def link(e):
     if e['eprint']: return "https://arxiv.org/abs/"+e['eprint']
     return None
 def esc(s): return html.escape(s,quote=True)
-def render_entry(e, role=None):
+def render_entry(e, role=None, show_collab=False):
     t=esc(hyper(e['title'])); a=esc(authors_fmt(e)); v=esc(venue(e)); u=link(e)
     tt=f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' if u else t
     badge=f' <span class="role-tag">{role}</span>' if role else ''
-    return f'      <li>\n        <span class="pub-title">{tt}</span>{badge}<br>\n        <span class="pub-meta">{a} &middot; {v}</span>\n      </li>'
+    collab=f' &middot; {esc(e["collab"])}' if show_collab and e['collab'] else ''
+    return f'      <li>\n        <span class="pub-title">{tt}</span>{badge}<br>\n        <span class="pub-meta">{a} &middot; {v}{collab}</span>\n      </li>'
 
-SELECTED=[("First Observation of Λπ","First author"),
+# Role badges for the Lead-author & major-contributor section (sec 2), matched by title substring.
+ROLES=[("First Observation of Λπ","First author"),
  ("Precise lifetime measurement of","Spokesperson &amp; corresponding author"),
  ("reaction cross section and evaluation of hypertriton","Spokesperson"),
  ("spectroscopy study of ¹¹","First author"),
@@ -101,13 +103,12 @@ SELECTED=[("First Observation of Λπ","First author"),
  ("Observation of a K̅NN bound state","Major contributor"),
  ("kaonic-helium isotopes","Major contributor"),
  ("Hard two-photon contribution","Led the luminosity monitor"),
- ("level structure by","Second author")]
-def find(sub):
-    for e in entries:
-        if sub.lower() in e['title'].lower(): return e
+ ("level structure by","Second author"),
+ ("First application of superconducting","Major contributor")]
+def role_for(e):
+    for sub,r in ROLES:
+        if sub.lower() in e['title'].lower(): return r
     return None
-sel_html=[render_entry(e,role) for sub,role in SELECTED if (e:=find(sub))]
-print("selected matched",len(sel_html))
 
 NAV='''  <header>
     <nav>
@@ -146,11 +147,6 @@ parts=[f'''<!DOCTYPE html>
       <a class="btn" href="assets/pdf/Ma_Yue_Publications_EN.pdf">&#8681; Full list &mdash; English (PDF)</a>
       <a class="btn" href="assets/pdf/Ma_Yue_Publications.pdf">&#8681; 中文 (PDF)</a>
     </p>
-
-    <h2>Selected publications</h2>
-    <ul class="publication-list">
-{chr(10).join(sel_html)}
-    </ul>
 ''']
 
 GROUPS=[(2,"Lead-author &amp; major-contributor",""),
@@ -164,7 +160,7 @@ for sec,title,note in GROUPS:
     if sec==1:
         note=f'A representative selection &mdash; showing {len(shown)} of {n}. The complete set of {n} Belle / Belle II collaboration papers is in the PDF above.'
     note_html=f'\n    <p class="pub-note">{note}</p>' if note else ''
-    body="\n".join(render_entry(e) for e in shown)
+    body="\n".join(render_entry(e, role_for(e) if sec==2 else None, show_collab=(sec==2)) for e in shown)
     parts.append(f'''    <h2>{title} <span class="count">({n})</span></h2>{note_html}
     <ul class="publication-list">
 {body}
