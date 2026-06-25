@@ -34,7 +34,8 @@ string and confirm they agree.
 | `assets/css/style.css` | All styling. Key classes: `.btn`, `.role-tag`, `.pub-title`, `.pub-meta`, `.pub-note`, `.count`, `.publication-list`, `.cv-entry`, `.cv-date`, `.subtitle` |
 | `assets/js/script.js` | Minor JS |
 | `assets/pdf/` | The downloadable PDFs (see *Languages*) |
-| `tools/` | The Publications generator + its data — **not** part of the rendered site |
+| `tools/` | The Publications generator (`build_publications.py`) + its bib data — **not** part of the rendered site |
+| `cv_src/` | **Self-contained LaTeX sources** for the downloadable PDFs (CV ×3, Publications ×3, `hjstyle.tex`, `build.sh`) — **not** rendered. See `cv_src/README.md` |
 
 ## Conventions
 - **Tone:** professional / formal academic (earlier playful copy was removed — keep it out).
@@ -54,12 +55,18 @@ The CV and publication list ship in **two languages**, in `assets/pdf/`. The **C
 | **CV** | `Ma_Yue_CV_EN.pdf` | `Ma_Yue_CV.pdf` |
 | **Publications** | `Ma_Yue_Publications_EN.pdf` | `Ma_Yue_Publications.pdf` |
 
-These PDFs are **built outside this repo** from LaTeX in the maintainer's CV workspace
-(`general_CV/Ma_Yue_CV{,_EN}.tex` and `Ma_Yue_Publications{,_EN}.tex`, `xelatex ×2`) and copied
-into `assets/pdf/`. When the CV/pubs
-change, rebuild those PDFs and re-copy them here. The downloadable **Publications PDFs are ordered to match
-this site's Publications page** — Lead-author & major-contributor → Belle / Belle II → Other → Proceedings
-(their master `.tex` files were reordered to put the lead-author section first); keep that order.
+These PDFs are **built in-repo** from the LaTeX sources in **`cv_src/`** (self-contained — no external dir):
+`cd cv_src && ./build.sh` runs `xelatex ×2` on each doc and copies the served EN + 中文 PDFs into
+`assets/pdf/` (日本語 is built but **not** served). When the CV/pubs change, edit `cv_src/*.tex`, rebuild,
+and re-run the web generator if the bib changed. The downloadable **Publications PDFs match this site's
+Publications page** — Lead-author & major-contributor → Belle / Belle II → Other → Proceedings; the only
+intended web-vs-PDF difference is Belle/Belle II (digest on the page, full list in the PDFs).
+
+> The Publications `.tex` are **hand-written `\item` lists**; the **web** list is generated from the **bib**.
+> They are two sources of the same data — **keep them in step** (same sections, entries, order). The
+> **Lead-author & major-contributor** section equals the **CV's `代表性论文` (9 papers, same order)** —
+> if the CV changes, change the pub list + bib to match. (`general_CV/` is the maintainer's old workspace,
+> now superseded by `cv_src/`.)
 
 ## Publications page is GENERATED — do not hand-edit
 `publications.html` is produced by **`tools/build_publications.py`** from **`tools/Ma_Yue_papers_only.bib`**
@@ -69,12 +76,14 @@ this site's Publications page** — Lead-author & major-contributor → Belle / 
 python3 tools/build_publications.py      # rewrites ../publications.html  (no deps beyond Python 3)
 ```
 
-Emitted structure: **Lead-author & major-contributor (10)** (role-tagged via the `ROLES` map; each entry
-also shows its experiment, e.g. J-PARC E73 / OLYMPUS, from the bib `collaboration` field) →
-**Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the full set lives in the PDF) →
-**Other journals (12)** → **Proceedings (27)**. The script cleans LaTeX titles to plain Unicode and
-converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `ROLES`. Keep
-`tools/Ma_Yue_papers_only.bib` in sync with the master bib in the CV workspace.
+Emitted structure: **Lead-author & major-contributor (9)** (role-tagged via the `ROLES` map; **these 9, in
+this order, = the CV's `代表性论文`**; each entry also shows its experiment, e.g. J-PARC E73 / OLYMPUS, from
+the bib `collaboration` field) → **Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the
+full set lives in the PDF) → **Other journals (13)** → **Proceedings (27)**. The script cleans LaTeX titles
+to plain Unicode and converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `ROLES`. The bib
+section order drives the page order, so reorder/move entries in the bib (and mirror in `cv_src/*.tex`) to
+realign — e.g. Okada (TES, PTEP 2016) sits in *Other journals*, not the lead section, to keep the lead
+section equal to the CV's 9.
 
 ## Update / deploy
 ```bash

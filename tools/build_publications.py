@@ -103,8 +103,7 @@ ROLES=[("First Observation of Λπ","First author"),
  ("Observation of a K̅NN bound state","Major contributor"),
  ("kaonic-helium isotopes","Major contributor"),
  ("Hard two-photon contribution","Led the luminosity monitor"),
- ("level structure by","Second author"),
- ("First application of superconducting","Major contributor")]
+ ("level structure by","Second author")]
 def role_for(e):
     for sub,r in ROLES:
         if sub.lower() in e['title'].lower(): return r

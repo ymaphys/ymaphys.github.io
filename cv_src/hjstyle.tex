@@ -1,0 +1,134 @@
+% ============================================================
+%  hjstyle.tex  —  shared preamble for the IMP/HIAF application
+%  Use:  \documentclass[a4paper,11pt,fontset=none]{ctexart}
+%        \input{hjstyle.tex}
+%  Compile with: xelatex
+% ============================================================
+
+\usepackage{geometry}
+\geometry{a4paper, top=2.4cm, bottom=2.3cm, left=2.4cm, right=2.4cm, headsep=10pt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,backgrounds,fit}
+\usepackage{fontspec}
+
+% ---------- Fonts: portable across machines (see README.md) ----------
+% Latin = XCharter (bundled with TeX Live). CJK = macOS system fonts when present
+% (preserves the original look), else Fandol (bundled with TeX Live) so the document
+% builds on ANY TeX Live install (Mac, Linux, Windows) with no extra font setup.
+\setmainfont{XCharter}% Latin: XCharter ships with TeX Live (always available)
+\IfFontExistsTF{Songti SC}
+  {\setCJKmainfont{Songti SC}\newCJKfontfamily\song{Songti SC}}
+  {\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]%
+   \newCJKfontfamily\song{FandolSong-Regular.otf}}
+\IfFontExistsTF{Heiti SC}
+  {\setCJKsansfont{Heiti SC}\newCJKfontfamily\hei{Heiti SC}}% CJK sans for emphasis/headings
+  {\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]%
+   \newCJKfontfamily\hei{FandolHei-Regular.otf}}
+% route enclosed numbers ①-⑳ and Roman numerals to the CJK font (XCharter lacks them)
+\xeCJKDeclareCharClass{CJK}{"2160 -> "2188}
+\xeCJKDeclareCharClass{CJK}{"2460 -> "24FF}
+
+% ---------- Colour palette ----------
+\definecolor{impblue}{RGB}{31,73,125}     % deep institutional blue
+\definecolor{impsky}{RGB}{46,116,181}     % brighter accent blue
+\definecolor{impgray}{RGB}{120,120,120}   % header/footer grey
+\definecolor{impink}{RGB}{20,40,70}        % near-black ink for key text
+\definecolor{impbg}{RGB}{238,243,249}      % pale blue panel background
+
+% ---------- Paragraph style: clean block layout ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\linespread{1.06}
+\emergencystretch=1.6em   % absorb long unbreakable Latin/math runs, avoid overfull
+\setlist{nosep, leftmargin=1.5em, topsep=2pt, itemsep=3pt}
+
+% ---------- Section headings (blue, ruled) ----------
+\titleformat{\section}[hang]
+  {\Large\bfseries\color{impblue}}{\thesection.}{0.5em}{}
+  [{\vspace{1pt}\color{impblue!35}\titlerule[1pt]}]
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+
+\titleformat{\subsection}[hang]
+  {\large\bfseries\color{impsky}}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.25em}
+
+\titleformat{\subsubsection}[runin]
+  {\bfseries\color{impink}}{}{0em}{}[\,]
+\titlespacing*{\subsubsection}{0pt}{0.4em}{0.5em}
+
+% ---------- Captions ----------
+\captionsetup{font=small, labelfont={bf,color=impblue}, labelsep=period, skip=4pt}
+
+% ---------- Running header / footer ----------
+\newcommand{\doctitle}{}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\fancyhead[L]{\small\color{impgray}\,马越\ \textperiodcentered\ Yue Ma}
+\fancyhead[R]{\small\color{impgray}\doctitle\,}
+\fancyfoot[C]{\small\color{impgray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{impblue!30}\leaders\hrule height \headrulewidth\hfill}}
+
+% ---------- Physics macros ----------
+\newcommand{\hn}[2]{\ensuremath{^{#1}_{\Lambda}\mathrm{#2}}}        % single-Lambda hypernucleus  \hn{3}{H}
+\newcommand{\hnn}[2]{\ensuremath{^{#1}_{\Lambda\Lambda}\mathrm{#2}}}% double-Lambda hypernucleus  \hnn{6}{He}
+\newcommand{\hsig}[2]{\ensuremath{^{#1}_{\Sigma}\mathrm{#2}}}       % Sigma hypernucleus  \hsig{3}{H}
+\newcommand{\dbar}{\ensuremath{\bar{d}}}
+\newcommand{\pbar}{\ensuremath{\bar{p}}}
+\newcommand{\Kbar}{\ensuremath{\bar{K}}}
+\newcommand{\KN}{\ensuremath{\bar{K}N}}
+\newcommand{\Kmpp}{\ensuremath{K^{-}pp}}
+\newcommand{\KNN}{\ensuremath{\bar{K}NN}}
+\newcommand{\Lam}{\ensuremath{\Lambda}}
+\newcommand{\Sig}{\ensuremath{\Sigma}}
+\newcommand{\Xibar}{\ensuremath{\Xi}}
+\newcommand{\Lc}{\ensuremath{\Lambda_c^{+}}}
+\newcommand{\gevu}{\,GeV/u}
+\newcommand{\mevc}{\,MeV/$c$}
+
+% ---------- Emphasis helpers ----------
+\newcommand{\lead}[1]{\textcolor{impblue}{\textbf{#1}}}   % blue bold lead-in
+\newcommand{\keypt}[1]{\textbf{#1}}                         % key statement
+\newcommand{\keyu}[1]{\uline{\textbf{#1}}}                  % strongest emphasis (use sparingly)
+\newcommand{\role}[1]{\textcolor{impsky}{\textbf{[#1]}}}    % authorship/role tag
+\newcommand{\tech}[1]{\textmd{#1}}                          % technical term/acronym: keep normal weight even inside bold
+
+% ---------- Blue-bar callout block (for "my contribution" etc.) ----------
+\newenvironment{callout}
+  {\par\smallskip\noindent\begin{list}{}{%
+     \setlength{\leftmargin}{1.1em}\setlength{\rightmargin}{0pt}%
+     \setlength{\topsep}{2pt}\setlength{\itemsep}{0pt}}%
+     \item[]\color{impink}%
+     \def\FrameRule{0pt}}
+  {\end{list}\par\smallskip}
+
+% Title banner used at the top of each document
+\newcommand{\hjbanner}[3]{% #1 = CN title, #2 = EN subtitle, #3 = meta line
+  {\noindent\Huge\bfseries\color{impblue} #1\par}
+  \vspace{2pt}
+  {\noindent\large\color{impink} #2\par}
+  \vspace{4pt}
+  {\noindent\small\color{impgray} #3\par}
+  \vspace{2pt}
+  {\noindent\color{impblue!45}\rule{\linewidth}{1.2pt}\par}
+  \vspace{4pt}
+}
+
+\usepackage[hidelinks]{hyperref}
