@@ -55,59 +55,64 @@ The CV and publication list ship in **two languages**, in `assets/pdf/`. The **C
 | **CV** | `Ma_Yue_CV_EN.pdf` | `Ma_Yue_CV.pdf` |
 | **Publications** | `Ma_Yue_Publications_EN.pdf` | `Ma_Yue_Publications.pdf` |
 
-These PDFs are **built in-repo** from the LaTeX sources in **`cv_src/`** (self-contained — no external dir):
-`cd cv_src && ./build.sh` runs `xelatex ×2` on each doc and copies the served EN + 中文 PDFs into
-`assets/pdf/` (日本語 is built but **not** served). When the CV/pubs change, edit `cv_src/*.tex`, rebuild,
-and re-run the web generator if the bib changed. The downloadable **Publications PDFs match this site's
-Publications page** — Lead-author & major-contributor → Belle / Belle II → Other → Proceedings; the only
-intended web-vs-PDF difference is Belle/Belle II (digest on the page, full list in the PDFs).
+These PDFs are **built in-repo** from **`cv_src/`** (self-contained — no external dir): `cd cv_src && ./build.sh`
+regenerates the lists from the bib, runs `xelatex ×2` on each doc, and copies the served EN + 中文 PDFs into
+`assets/pdf/` (日本語 is built but **not** served). The downloadable **Publications PDFs match this site's
+Publications page** (both generated from the bib) — Lead-author & major-contributor → Belle / Belle II → Other
+→ Proceedings; the only intended web-vs-PDF difference is Belle/Belle II (digest on the page, full list in the PDFs).
 
-> The Publications `.tex` are **hand-written `\item` lists**; the **web** list is generated from the **bib**.
-> They are two sources of the same data — **keep them in step** (same sections, entries, order). The
-> **Lead-author & major-contributor** section equals the **CV's `代表性论文` (9 papers, same order)** —
-> if the CV changes, change the pub list + bib to match. (`general_CV/` is the maintainer's old workspace,
-> now superseded by `cv_src/`.)
+> **Single source:** the **web list AND the PDF lists are both generated from the bib** by
+> `build_publications.py` (→ `publications.html` + `cv_src/pub_body_{en,zh,ja}.tex`, which the
+> `Ma_Yue_Publications*.tex` wrappers `\input`). Edit the bib, not the lists. The **Lead-author &
+> major-contributor** section equals the **CV's `代表性论文` (same papers, count, order)** — the CV is the one
+> publication list still hand-written, so update it (and the bib) together. (`general_CV/` is superseded by `cv_src/`.)
 
 ## Publications page is GENERATED — do not hand-edit
-`publications.html` is produced by **`tools/build_publications.py`** from **`tools/Ma_Yue_papers_only.bib`**
-(127 verified entries, sectioned). To change it, edit the bib or the script and regenerate:
+**`tools/build_publications.py`** reads **`tools/Ma_Yue_papers_only.bib`** (127 verified entries, sectioned)
+and writes BOTH the web page **and** the PDF list bodies — single source. Edit the bib (or the script), then:
 
 ```bash
-python3 tools/build_publications.py      # rewrites ../publications.html  (no deps beyond Python 3)
+python3 tools/build_publications.py   # rewrites ../publications.html AND ../cv_src/pub_body_{en,zh,ja}.tex
 ```
 
 Emitted structure: **Lead-author & major-contributor (9)** (role-tagged via the `ROLES` map; **these 9, in
 this order, = the CV's `代表性论文`**; each entry also shows its experiment, e.g. J-PARC E73 / OLYMPUS, from
 the bib `collaboration` field) → **Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the
-full set lives in the PDF) → **Other journals (13)** → **Proceedings (27)**. The script cleans LaTeX titles
-to plain Unicode and converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `ROLES`. The bib
-section order drives the page order, so reorder/move entries in the bib (and mirror in `cv_src/*.tex`) to
-realign — e.g. Okada (TES, PTEP 2016) sits in *Other journals*, not the lead section, to keep the lead
-section equal to the CV's 9.
+full set lives in the PDF) → **Other journals (13)** → **Proceedings (27)**. For HTML the script cleans titles
+to Unicode; for LaTeX it `\input`s the bib title with bare math macros `\ensuremath`-wrapped (`lx_title`) and
+text-arrows mapped to math arrows. Tunables: `DIGEST_N`, `ROLES`/`ROLE_L10N` (role wording), `LANG` (per-language
+headings/intro). The bib section order drives both outputs — reorder/move entries in the **bib** to realign
+(e.g. Okada/TES sits in *Other journals*, not lead, to keep the lead section = the CV's 9).
 
-## ➕ Adding / updating a publication — touch ALL of these
-A new paper lives on several surfaces; updating one and not the others breaks the consistency rule. The web
-counts + "N total" update **automatically** from the bib, but the **PDF heading counts, the PDF "127 total"
-intro line, and `index.html` are hardcoded** and must be bumped by hand.
+## ➕ Adding / updating a publication — ONE source
+**The bib `tools/Ma_Yue_papers_only.bib` is the single source for BOTH the web page and the PDF lists.**
+`build_publications.py` generates `publications.html` **and** `cv_src/pub_body_{en,zh,ja}.tex` (the LaTeX
+bodies the three `Ma_Yue_Publications*.tex` wrappers `\input`). Section counts and the "N total" intro are
+all computed from the bib — nothing to bump by hand.
 
-**A. Every new paper:**
+**A. Every new paper — just edit the bib, then rebuild:**
 1. **`tools/Ma_Yue_papers_only.bib`** — add the entry under the right `% SECTION` marker
-   (Belle / lead / other / proceedings) at the correct spot (**bib order = page order**; reverse-chronological
-   within Belle/Other/Proceedings). For a lead/major paper add its `% [YEAR] … — role` comment.
-2. **Regenerate the web:** `python3 tools/build_publications.py` (counts + total auto-update).
-3. **`cv_src/Ma_Yue_Publications{,_EN,_JP}.tex` (all 3)** — add the same entry to the matching section/position;
-   bump that **section's heading count** (e.g. `(13)`→`(14)`) **and the intro total** (中文 `共 N 篇` / EN
-   `N publications in total` / 日本語 `全 N 編`). For a lead paper add the `\role{…}` tag in each language
-   (wording from the matching CV).
-4. **Rebuild + publish PDFs:** `cd cv_src && ./build.sh` (builds all, copies EN + 中文 → `assets/pdf/`).
-5. **Verify** web counts == PDF counts == total; `git diff` all surfaces; check live with a cache-buster.
+   (Belle / lead / other / proceedings) at the correct spot (**bib order = list order**; reverse-chronological
+   within Belle/Other/Proceedings). For a lead/major paper, set its `collaboration` field (shown as the
+   experiment tag) and `% [YEAR] … — role` comment.
+2. **Rebuild everything:** `cd cv_src && ./build.sh` — regenerates the web + the 3 PDF bodies from the bib,
+   compiles all PDFs, and copies the served EN + 中文 PDFs to `assets/pdf/`. (Or just
+   `python3 tools/build_publications.py` to refresh the web + bodies without compiling.)
+3. **Verify** & commit; check live with a cache-buster.
 
-**B. If it's a lead-author / `代表性论文` highlight** (keep *pub Lead-author section = CV 代表性论文*: same set, count, order):
-6. Also add it to **`cv_src/Ma_Yue_CV{,_EN,_JP}.tex`** (代表性论文), the **bib lead section**, and the
-   **`ROLES` map** in `build_publications.py` (web role badge). `build.sh` rebuilds the CV PDFs too.
-7. Optionally feature it in **`index.html` → "Selected recent publications"** (hand-curated ~5 newest, hardcoded).
+**B. If it's a lead-author / `代表性论文` highlight** (NOT auto — keep these in step with the bib lead section):
+- **Role badge:** if the paper needs a role tag, add a `(title-substring, "Role")` to the **`ROLES`** map in
+  `build_publications.py`; if it's a NEW role phrase, add its EN/中文/日本語 wording to **`ROLE_L10N`**.
+- **The CV** (`cv_src/Ma_Yue_CV{,_EN,_JP}.tex`, `代表性论文`) is hand-written and **must equal the bib lead
+  section** (same papers, count, order). Update it to match.
+- Optionally feature it in **`index.html` → "Selected recent publications"** (hand-curated ~5 newest, hardcoded).
 
 **C. Belle/Belle II paper:** only **A** (no role tag). The page shows a `DIGEST_N`-of-N digest; the PDFs the full list.
+
+> **Do NOT hand-edit** `publications.html` or `cv_src/pub_body_*.tex` or the list sections of the wrappers —
+> they are generated. Edit the **bib** (and for headings/role wording, the `LANG`/`ROLE_L10N` tables in
+> `build_publications.py`). The only hand-written publication text left is the **CV's `代表性论文`** and
+> **index.html recent-pubs**.
 
 Self-contained: everything builds from this repo (`cv_src/` + `tools/`); only a TeX Live install is needed
 (`hjstyle.tex` falls back to bundled XCharter/Fandol fonts). `general_CV/` is the old workspace, superseded.
@@ -121,7 +126,7 @@ cache-busting query, e.g. `https://ymaphys.github.io/publications.html?v=2`.
 
 ## Don't
 - Don't commit `.history/` (VS Code local history — gitignored).
-- Don't hand-edit `publications.html` — regenerate it.
+- Don't hand-edit `publications.html` or `cv_src/pub_body_*.tex` or the wrappers' list sections — regenerate from the bib.
 - Don't add the INSPIRE link.
 
 ## Revert
