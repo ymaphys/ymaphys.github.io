@@ -85,6 +85,33 @@ section order drives the page order, so reorder/move entries in the bib (and mir
 realign — e.g. Okada (TES, PTEP 2016) sits in *Other journals*, not the lead section, to keep the lead
 section equal to the CV's 9.
 
+## ➕ Adding / updating a publication — touch ALL of these
+A new paper lives on several surfaces; updating one and not the others breaks the consistency rule. The web
+counts + "N total" update **automatically** from the bib, but the **PDF heading counts, the PDF "127 total"
+intro line, and `index.html` are hardcoded** and must be bumped by hand.
+
+**A. Every new paper:**
+1. **`tools/Ma_Yue_papers_only.bib`** — add the entry under the right `% SECTION` marker
+   (Belle / lead / other / proceedings) at the correct spot (**bib order = page order**; reverse-chronological
+   within Belle/Other/Proceedings). For a lead/major paper add its `% [YEAR] … — role` comment.
+2. **Regenerate the web:** `python3 tools/build_publications.py` (counts + total auto-update).
+3. **`cv_src/Ma_Yue_Publications{,_EN,_JP}.tex` (all 3)** — add the same entry to the matching section/position;
+   bump that **section's heading count** (e.g. `(13)`→`(14)`) **and the intro total** (中文 `共 N 篇` / EN
+   `N publications in total` / 日本語 `全 N 編`). For a lead paper add the `\role{…}` tag in each language
+   (wording from the matching CV).
+4. **Rebuild + publish PDFs:** `cd cv_src && ./build.sh` (builds all, copies EN + 中文 → `assets/pdf/`).
+5. **Verify** web counts == PDF counts == total; `git diff` all surfaces; check live with a cache-buster.
+
+**B. If it's a lead-author / `代表性论文` highlight** (keep *pub Lead-author section = CV 代表性论文*: same set, count, order):
+6. Also add it to **`cv_src/Ma_Yue_CV{,_EN,_JP}.tex`** (代表性论文), the **bib lead section**, and the
+   **`ROLES` map** in `build_publications.py` (web role badge). `build.sh` rebuilds the CV PDFs too.
+7. Optionally feature it in **`index.html` → "Selected recent publications"** (hand-curated ~5 newest, hardcoded).
+
+**C. Belle/Belle II paper:** only **A** (no role tag). The page shows a `DIGEST_N`-of-N digest; the PDFs the full list.
+
+Self-contained: everything builds from this repo (`cv_src/` + `tools/`); only a TeX Live install is needed
+(`hjstyle.tex` falls back to bundled XCharter/Fandol fonts). `general_CV/` is the old workspace, superseded.
+
 ## Update / deploy
 ```bash
 git add -A && git commit -m "…" && git push origin main
