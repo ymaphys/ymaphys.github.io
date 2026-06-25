@@ -40,6 +40,22 @@ Before finishing any edit, check across:
 When in doubt, after any change grep the other pages, the generator, and all language `.tex`/PDFs for the same
 string and confirm they agree.
 
+### 🗺️ Surface map — the SAME content lives in several files; edit ALL of them
+Before editing, find every surface the content appears on. Most content is **mirrored**, not single-sourced:
+| Content | Surfaces that MUST stay in sync |
+|---------|--------------------------------|
+| **CV body** (Profile, Leadership/Appointments, **Signature Achievements**, Education, Grants, …) | `cv.html` **(hand-written mirror of the CV PDF)** ⇄ `cv_src/Ma_Yue_CV.tex` + `_EN.tex` + `_JP.tex` (×3) → rebuilt CV PDFs. **`cv.html` is NOT a publications-only page — it mirrors the whole CV.** |
+| **Publications list** | `tools/Ma_Yue_papers_only.bib` → (generator) → `publications.html` + `cv_src/pub_body_{en,zh,ja}.tex` → Publications PDFs. Edit the **bib**, never the outputs. |
+| **CV `代表性论文` (lead list)** | hand-written in the 3 CV `.tex` — must equal the bib lead section (papers/count/order). |
+| **Bio / recent-pubs / role wording / nav / footer** | every `.html` page + the matching `.tex`/PDFs, all languages. |
+
+### ✅ Mandatory pre-finish checklist (do NOT declare done until all pass)
+1. **Map first:** grep the changed string/number across `*.html`, `cv_src/*.tex`, `tools/`. A CV-body edit is **not** "CV only" — `cv.html` mirrors it.
+2. **Apply to every surface** the grep found, in **every language** (EN / 中文 / 日本語).
+3. **Rebuild** (`cd cv_src && ./build.sh`) and **visually inspect** the affected PDFs.
+4. **Re-grep** the same string post-edit: every surface must agree (count, order, wording, notation).
+5. Only then commit. If you skipped a surface, that is the #1 recurring mistake here — see memory `[[site-consistency-priority]]`.
+
 ## Structure
 | Path | What |
 |------|------|
