@@ -54,7 +54,7 @@ Before editing, find every surface the content appears on. Most content is **mir
 2. **Apply to every surface** the grep found, in **every language** (EN / 中文 / 日本語).
 3. **Rebuild** (`cd cv_src && ./build.sh`) and **visually inspect** the affected PDFs.
 4. **Re-grep** the same string post-edit: every surface must agree (count, order, wording, notation).
-5. Only then commit. If you skipped a surface, that is the #1 recurring mistake here — see memory `[[site-consistency-priority]]`.
+5. Only then commit. **Skipping a surface is the #1 recurring mistake in this repo** — e.g. editing the CV body in the 3 `cv_src/*.tex` files but forgetting `cv.html` (or vice-versa). The map+re-grep steps exist to catch exactly that; do not shortcut them.
 
 ## Structure
 | Path | What |
