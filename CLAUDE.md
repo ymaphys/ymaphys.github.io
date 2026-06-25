@@ -6,6 +6,22 @@ files directly (no Jekyll, no Actions).
 
 - **Repo:** `github.com/ymaphys/ymaphys.github.io` · **Live:** https://ymaphys.github.io
 
+## 🚀 Quick reference — common tasks
+| Task | Do this |
+|------|---------|
+| **Add / edit / remove a publication** | Edit `tools/Ma_Yue_papers_only.bib` → `cd cv_src && ./build.sh` → commit & push. (Web page + all PDFs regenerate; section counts & "N total" are automatic.) |
+| **Rebuild the PDFs** | `cd cv_src && ./build.sh` (regenerates lists from the bib, compiles, copies EN + 中文 to `assets/pdf/`) |
+| **Regenerate the web page only** | `python3 tools/build_publications.py` |
+| **Change role wording / a new role** | `ROLES` + `ROLE_L10N` in `tools/build_publications.py` → `./build.sh` |
+| **Change a section heading / intro text** | `LANG` table in `tools/build_publications.py` → `./build.sh` |
+| **Change a download-button label** | `cv.html` **and** the `<a class="btn">` line in `build_publications.py` (then regenerate) — keep all pages parallel |
+| **Edit bio / prose / a page** | the `.html` directly (plain static HTML) |
+| **Deploy** | `git add -A && git commit -m "…" && git push origin main` → live in ~1–2 min |
+| **Verify live** | open `…/publications.html?v=N` (cache-bust); PDFs: compare `md5` of live vs repo |
+
+> Golden rule: **edit the bib, not the generated lists.** `publications.html` and `cv_src/pub_body_*.tex` are
+> generated. The only hand-written publication text is the **CV's `代表性论文`** (keep it = the bib lead section).
+
 ## ⚠️ Consistency is a HIGH-PRIORITY rule
 Treat the whole site — every HTML page **and** every downloadable PDF, in every language — as one
 coherent artifact. A change in one place is not done until its counterparts everywhere are aligned.
@@ -13,8 +29,8 @@ Before finishing any edit, check across:
 - **Parallel UI:** symmetric/parallel labels and structure. Language links/buttons name only the language
   and match across pages — `English (PDF)` / `中文 (PDF)` (no lopsided "Download CV — English" vs bare "中文").
 - **Web ⇄ download PDFs:** `publications.html` and the download PDFs carry the **same sections, entries and
-  order**. The **only** intended difference is Belle/Belle II — a digest (first `DIGEST_N`) on the page vs the
-  full list in the PDFs. (The web is generated from the bib; the PDFs are built from the LaTeX workspace — keep both in step.)
+  order** because **both are generated from the one bib** (`build_publications.py`). The **only** intended
+  difference is Belle/Belle II — a digest (first `DIGEST_N`) on the page vs the full list in the PDFs.
 - **Role / contribution wording:** use the **exact** expressions from the CV, and keep them consistent across
   the CV, the publications page, and the PDFs. **Each language uses its own CV's wording** — EN: "First author /
   Spokesperson & corresponding author / Led the luminosity monitor"; 中文: "第一作者 / 发言人 & 通讯作者 /
