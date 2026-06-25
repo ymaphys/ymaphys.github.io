@@ -153,7 +153,7 @@ parts=[f'''<!DOCTYPE html>
     </ul>
 ''']
 
-GROUPS=[(2,"Lead-author, J-PARC &amp; OLYMPUS",""),
+GROUPS=[(2,"Lead-author &amp; major-contributor",""),
         (1,"Belle / Belle II Collaboration",""),
         (3,"Other peer-reviewed journal articles",""),
         (4,"Conference proceedings","")]

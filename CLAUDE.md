@@ -40,7 +40,7 @@ These PDFs are **built outside this repo** from LaTeX in the maintainer's CV wor
 (`general_CV/Ma_Yue_CV{,_EN}.tex` and `Ma_Yue_Publications{,_EN}.tex`, `xelatex ×2`) and copied
 into `assets/pdf/`. When the CV/pubs
 change, rebuild those PDFs and re-copy them here. The downloadable **Publications PDFs are ordered to match
-this site's Publications page** — Lead-author / J-PARC / OLYMPUS → Belle / Belle II → Other → Proceedings
+this site's Publications page** — Lead-author & major-contributor → Belle / Belle II → Other → Proceedings
 (their master `.tex` files were reordered to put the lead-author section first); keep that order.
 
 ## Publications page is GENERATED — do not hand-edit
@@ -51,7 +51,7 @@ this site's Publications page** — Lead-author / J-PARC / OLYMPUS → Belle / B
 python3 tools/build_publications.py      # rewrites ../publications.html  (no deps beyond Python 3)
 ```
 
-Emitted structure: **Selected** (curated, role-tagged) → **Lead-author / J-PARC / OLYMPUS (10)** →
+Emitted structure: **Selected** (curated, role-tagged) → **Lead-author & major-contributor (10)** →
 **Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the full set lives in the PDF) →
 **Other journals (12)** → **Proceedings (27)**. The script cleans LaTeX titles to plain Unicode and
 converts hypernuclei to MathJax. Tunables near the top: `DIGEST_N`, `SELECTED`. Keep
