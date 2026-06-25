@@ -29,7 +29,7 @@ files directly (no Jekyll, no Actions).
   is Belle-only and hides the lead-author work; ORCID is the canonical ID.
 
 ## Languages — downloadable PDFs
-The CV and publication list ship in **three languages**, in `assets/pdf/`, linked from `cv.html` and `publications.html`:
+The CV and publication list ship in **three languages**, in `assets/pdf/`. The **CV** PDFs are linked from both `cv.html` and the Home page (`index.html`); the **Publications** PDFs from `publications.html`.
 
 | | English | 中文 (default) | 日本語 |
 |--|--|--|--|
@@ -39,7 +39,9 @@ The CV and publication list ship in **three languages**, in `assets/pdf/`, linke
 These PDFs are **built outside this repo** from LaTeX in the maintainer's CV workspace
 (`general_CV/Ma_Yue_CV{,_EN,_JP}.tex` and `Ma_Yue_Publications{,_EN,_JP}.tex`, `xelatex ×2`) and copied
 into `assets/pdf/`. The Japanese docs override the CJK font to Hiragino Mincho/Sans. When the CV/pubs
-change, rebuild those PDFs and re-copy them here.
+change, rebuild those PDFs and re-copy them here. The downloadable **Publications PDFs are ordered to match
+this site's Publications page** — Lead-author / J-PARC / OLYMPUS → Belle / Belle II → Other → Proceedings
+(their master `.tex` files were reordered to put the lead-author section first); keep that order.
 
 ## Publications page is GENERATED — do not hand-edit
 `publications.html` is produced by **`tools/build_publications.py`** from **`tools/Ma_Yue_papers_only.bib`**
