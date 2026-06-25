@@ -145,7 +145,6 @@ parts=[f'''<!DOCTYPE html>
     <p class="links">
       <a class="btn" href="assets/pdf/Ma_Yue_Publications_EN.pdf">&#8681; Full list &mdash; English (PDF)</a>
       <a class="btn" href="assets/pdf/Ma_Yue_Publications.pdf">&#8681; 中文 (PDF)</a>
-      <a class="btn" href="assets/pdf/Ma_Yue_Publications_JP.pdf">&#8681; 日本語 (PDF)</a>
     </p>
 
     <h2>Selected publications</h2>
