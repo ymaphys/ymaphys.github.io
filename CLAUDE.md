@@ -6,6 +6,24 @@ files directly (no Jekyll, no Actions).
 
 - **Repo:** `github.com/ymaphys/ymaphys.github.io` · **Live:** https://ymaphys.github.io
 
+## ⚠️ Consistency is a HIGH-PRIORITY rule
+Treat the whole site — every HTML page **and** every downloadable PDF, in every language — as one
+coherent artifact. A change in one place is not done until its counterparts everywhere are aligned.
+Before finishing any edit, check across:
+- **Parallel UI:** symmetric/parallel labels and structure. Language links/buttons name only the language
+  and match across pages — `English (PDF)` / `中文 (PDF)` (no lopsided "Download CV — English" vs bare "中文").
+- **Web ⇄ download PDFs:** `publications.html` and the download PDFs carry the **same sections, entries and
+  order**. The **only** intended difference is Belle/Belle II — a digest (first `DIGEST_N`) on the page vs the
+  full list in the PDFs. (The web is generated from the bib; the PDFs are built from the LaTeX workspace — keep both in step.)
+- **Role / contribution wording:** use the **exact** expressions from the CV, and keep them consistent across
+  the CV, the publications page, and the PDFs. **Each language uses its own CV's wording** — EN: "First author /
+  Spokesperson & corresponding author / Led the luminosity monitor"; 中文: "第一作者 / 发言人 & 通讯作者 /
+  主导亮度监测器（PbF₂）研制"; 日本語: "筆頭著者 / スポークスパーソン & 責任著者 / 輝度モニターの開発を主導".
+- **Notation & tone:** hypernuclei subscript-Λ, formal academic tone, footer/nav — identical everywhere (see *Conventions*).
+
+When in doubt, after any change grep the other pages, the generator, and all language `.tex`/PDFs for the same
+string and confirm they agree.
+
 ## Structure
 | Path | What |
 |------|------|
