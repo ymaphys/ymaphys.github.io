@@ -6,10 +6,17 @@ files directly (no Jekyll, no Actions).
 
 - **Repo:** `github.com/ymaphys/ymaphys.github.io` · **Live:** https://ymaphys.github.io
 
-> **Cross-machine knowledge policy:** the user works on this repo from several machines. **This CLAUDE.md
-> (checked into the repo) is the single home for durable project knowledge** — record project facts, runbooks
-> and pending tasks HERE, not in machine-local Claude memory (keep memory for machine-specific state only,
-> e.g. CLI auth). The repo is **public** — never put private notes in it.
+## 📌 IMPORTANT rule — docs & "memory" live IN THIS REPO (cross-machine)
+The user works on this repo from **several machines**. Machine-local Claude memory
+(`~/.claude/projects/…`) does **not** travel — **the repo does**. Every session, on every machine:
+1. **This CLAUDE.md is the single durable store** of project knowledge — facts, conventions, runbooks,
+   pending tasks, lessons learned. When a session learns something durable, **fold it into CLAUDE.md
+   (or `cv_src/README.md` for build details) and commit & push in that same session.** Knowledge left
+   only in machine-local memory or in the chat is considered lost.
+2. **Machine-local Claude memory is only for** machine-specific state (e.g. whether `gh` is
+   authenticated on that Mac) and notes too private for a public repo.
+3. The repo is **public** — never commit private information; phrase in-repo notes neutrally.
+4. If repo docs and local memory disagree, **the repo docs win** (they are the canonical, newest copy).
 
 ## 🚀 Quick reference — common tasks
 | Task | Do this |
@@ -180,6 +187,8 @@ broken publicly. Note: `gh run rerun` on the managed Pages workflow can leave a 
 "queued" that GitHub can't cancel — ignore it; any newer push supersedes it.
 
 ## Don't
+- Don't leave durable project knowledge only in machine-local Claude memory or the chat — fold it into
+  CLAUDE.md and push (see the 📌 rule at the top).
 - Don't commit `.history/` (VS Code local history — gitignored).
 - Don't hand-edit `publications.html` or `cv_src/pub_body_*.tex` or the wrappers' list sections — regenerate from the bib.
 - Don't add the INSPIRE link.
