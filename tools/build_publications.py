@@ -60,7 +60,7 @@ for ln in raw.split('\n'):
         if ln.strip()=='}':
             b=buf; entries.append(dict(section=sec_here,role=rc,title=clean(field(b,'title')),title_raw=field(b,'title'),
                 author=field(b,'author'),collab=field(b,'collaboration'),journal=field(b,'journal'),
-                volume=field(b,'volume'),pages=field(b,'pages'),year=field(b,'year'),doi=field(b,'doi'),eprint=field(b,'eprint')))
+                volume=field(b,'volume'),pages=field(b,'pages'),note=field(b,'note'),year=field(b,'year'),doi=field(b,'doi'),eprint=field(b,'eprint')))
             buf=None; last_rc=None
 from collections import Counter
 print("parsed",len(entries),"by section",dict(sorted(Counter(e['section'] for e in entries).items())))
@@ -78,6 +78,7 @@ def venue(e):
         v=e['journal']
         if e['volume']: v+=' '+e['volume']
         if e['pages']: v+=', '+e['pages']
+        if e['note']: v+=', '+e['note']   # e.g. "in press" for accepted papers
         if e['year']: v+=f" ({e['year']})"
         return v
     if e['eprint']: return f"arXiv:{e['eprint']}"+(f" ({e['year']})" if e['year'] else "")
@@ -98,6 +99,7 @@ def render_entry(e, role=None, show_collab=False):
 ROLES=[("First Observation of Λπ","First author"),
  ("Precise lifetime measurement of","Spokesperson &amp; corresponding author"),
  ("reaction cross section and evaluation of hypertriton","Spokesperson"),
+ ("energy-resolved muon spin","First author &amp; corresponding author"),
  ("spectroscopy study of ¹¹","First author"),
  ("nuclear bound state, observed","Founding member &middot; major author"),
  ("Observation of a K̅NN bound state","Major contributor"),
@@ -167,7 +169,7 @@ for sec,title,note in GROUPS:
 ''')
 parts.append('''  </main>
   <footer>
-    <p>&copy; 2026 Yue Ma &middot; Last updated June 2026</p>
+    <p>&copy; 2026 Yue Ma &middot; Last updated July 2026</p>
   </footer>
 </body>
 </html>
@@ -183,6 +185,7 @@ def lx_venue(e):
         v=e['journal']
         if e['volume']: v+='~\\textbf{'+e['volume']+'}'
         if e['pages']:  v+=', '+e['pages']
+        if e['note']:   v+=', '+e['note']   # e.g. "in press" for accepted papers
         if e['year']:   v+=' ('+e['year']+')'
         return v
     if e['eprint']: return 'arXiv:'+e['eprint']+((' ('+e['year']+')') if e['year'] else '')
@@ -199,6 +202,7 @@ def belle_tag(c):
 ROLE_L10N={
  'First author':{'en':'First author','zh':'第一作者','ja':'筆頭著者'},
  'Spokesperson &amp; corresponding author':{'en':'Spokesperson \\& corresponding author','zh':'发言人 \\& 通讯作者','ja':'スポークスパーソン \\& 責任著者'},
+ 'First author &amp; corresponding author':{'en':'First author \\& corresponding author','zh':'第一作者 \\& 通讯作者','ja':'筆頭著者 \\& 責任著者'},
  'Spokesperson':{'en':'Spokesperson','zh':'发言人','ja':'スポークスパーソン'},
  'Founding member &middot; major author':{'en':'Founding member \\textperiodcentered{} major author','zh':'主要作者之一','ja':'主要著者の一人'},
  'Major contributor':{'en':'Major contributor','zh':'主要贡献者之一','ja':'主要貢献者の一人'},

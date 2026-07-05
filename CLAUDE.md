@@ -100,21 +100,21 @@ Publications page** (both generated from the bib) — Lead-author & major-contri
 > publication list still hand-written, so update it (and the bib) together. (`general_CV/` is superseded by `cv_src/`.)
 
 ## Publications page is GENERATED — do not hand-edit
-**`tools/build_publications.py`** reads **`tools/Ma_Yue_papers_only.bib`** (127 verified entries, sectioned)
+**`tools/build_publications.py`** reads **`tools/Ma_Yue_papers_only.bib`** (128 verified entries, sectioned)
 and writes BOTH the web page **and** the PDF list bodies — single source. Edit the bib (or the script), then:
 
 ```bash
 python3 tools/build_publications.py   # rewrites ../publications.html AND ../cv_src/pub_body_{en,zh,ja}.tex
 ```
 
-Emitted structure: **Lead-author & major-contributor (9)** (role-tagged via the `ROLES` map; **these 9, in
+Emitted structure: **Lead-author & major-contributor (10)** (role-tagged via the `ROLES` map; **these 10, in
 this order, = the CV's `代表性论文`**; each entry also shows its experiment, e.g. J-PARC E73 / OLYMPUS, from
 the bib `collaboration` field) → **Belle / Belle II** (digest: first `DIGEST_N`=15 of 78 on the page; the
 full set lives in the PDF) → **Other journals (13)** → **Proceedings (27)**. For HTML the script cleans titles
 to Unicode; for LaTeX it `\input`s the bib title with bare math macros `\ensuremath`-wrapped (`lx_title`) and
 text-arrows mapped to math arrows. Tunables: `DIGEST_N`, `ROLES`/`ROLE_L10N` (role wording), `LANG` (per-language
 headings/intro). The bib section order drives both outputs — reorder/move entries in the **bib** to realign
-(e.g. Okada/TES sits in *Other journals*, not lead, to keep the lead section = the CV's 9).
+(e.g. Okada/TES sits in *Other journals*, not lead, to keep the lead section = the CV's 10).
 
 ## ➕ Adding / updating a publication — ONE source
 **The bib `tools/Ma_Yue_papers_only.bib` is the single source for BOTH the web page and the PDF lists.**
