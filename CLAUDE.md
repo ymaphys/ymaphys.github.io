@@ -6,6 +6,11 @@ files directly (no Jekyll, no Actions).
 
 - **Repo:** `github.com/ymaphys/ymaphys.github.io` · **Live:** https://ymaphys.github.io
 
+> **Cross-machine knowledge policy:** the user works on this repo from several machines. **This CLAUDE.md
+> (checked into the repo) is the single home for durable project knowledge** — record project facts, runbooks
+> and pending tasks HERE, not in machine-local Claude memory (keep memory for machine-specific state only,
+> e.g. CLI auth). The repo is **public** — never put private notes in it.
+
 ## 🚀 Quick reference — common tasks
 | Task | Do this |
 |------|---------|
@@ -133,7 +138,9 @@ all computed from the bib — nothing to bump by hand.
    **Accepted / in-press paper:** give it `journal`, `year` and `note = "in press"` — no `volume`/`pages`/`doi`
    yet. Web + PDFs render `…, in press (YEAR)`; the web title stays **unlinked** until a `doi`/`eprint` exists.
    When published, fill in `doi`/`volume`/`pages`, drop the `note`, rebuild. *(Currently applies to
-   `Ma:2026muSR`, the NIM-A μSR paper — complete its metadata when NIM-A publishes it.)*
+   `Ma:2026muSR`, the NIM-A μSR paper — complete its metadata when NIM-A publishes it, and at the same
+   time re-verify the quoted "~30%" figure-of-merit gain in the CVs/`cv.html`/`research.html` against the
+   final published text.)*
 2. **Rebuild everything:** `cd cv_src && ./build.sh` — regenerates the web + the 3 PDF bodies from the bib,
    compiles all PDFs, and copies the served EN + 中文 PDFs to `assets/pdf/`. (Or just
    `python3 tools/build_publications.py` to refresh the web + bodies without compiling.)
