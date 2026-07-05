@@ -33,8 +33,9 @@ Before finishing any edit, check across:
   difference is Belle/Belle II — a digest (first `DIGEST_N`) on the page vs the full list in the PDFs.
 - **Role / contribution wording:** use the **exact** expressions from the CV, and keep them consistent across
   the CV, the publications page, and the PDFs. **Each language uses its own CV's wording** — EN: "First author /
-  Spokesperson & corresponding author / Led the luminosity monitor"; 中文: "第一作者 / 发言人 & 通讯作者 /
-  主导亮度监测器（PbF₂）研制"; 日本語: "筆頭著者 / スポークスパーソン & 責任著者 / 輝度モニターの開発を主導".
+  First author & corresponding author / Spokesperson & corresponding author / Led the luminosity monitor";
+  中文: "第一作者 / 第一作者 & 通讯作者 / 发言人 & 通讯作者 / 主导亮度监测器（PbF₂）研制"; 日本語: "筆頭著者 /
+  筆頭著者 & 責任著者 / スポークスパーソン & 責任著者 / 輝度モニターの開発を主導".
 - **Notation & tone:** hypernuclei subscript-Λ, formal academic tone, footer/nav — identical everywhere (see *Conventions*).
 
 When in doubt, after any change grep the other pages, the generator, and all language `.tex`/PDFs for the same
@@ -75,7 +76,9 @@ Before editing, find every surface the content appears on. Most content is **mir
   **Hypernuclei must use a subscript Λ/Σ**, e.g. `\(^{4}_{\Lambda}\mathrm{H}\)` → ⁴ΛH. Plain isotopes
   (³He, ⁴He) stay as Unicode superscripts; other symbols (Λπ, K̄N, π⁺, B⁰) are fine as Unicode.
 - **Nav** is duplicated in each page's `<header>` — keep the four links and `class="active"` on the current page.
-- **Footer:** `© 2026 Yue Ma · Last updated <month year>`.
+- **Footer:** `© 2026 Yue Ma · Last updated <month year>`. The month lives in **4 places** — `index.html`,
+  `cv.html`, `research.html` **and** the footer string in `build_publications.py` (→ `publications.html`);
+  bump all four together when publishing a content update.
 - **Contact:** email + ORCID only. **INSPIRE is deliberately NOT linked** — the live INSPIRE author profile
   is Belle-only and hides the lead-author work; ORCID is the canonical ID.
 
@@ -127,6 +130,10 @@ all computed from the bib — nothing to bump by hand.
    (Belle / lead / other / proceedings) at the correct spot (**bib order = list order**; reverse-chronological
    within Belle/Other/Proceedings). For a lead/major paper, set its `collaboration` field (shown as the
    experiment tag) and `% [YEAR] … — role` comment.
+   **Accepted / in-press paper:** give it `journal`, `year` and `note = "in press"` — no `volume`/`pages`/`doi`
+   yet. Web + PDFs render `…, in press (YEAR)`; the web title stays **unlinked** until a `doi`/`eprint` exists.
+   When published, fill in `doi`/`volume`/`pages`, drop the `note`, rebuild. *(Currently applies to
+   `Ma:2026muSR`, the NIM-A μSR paper — complete its metadata when NIM-A publishes it.)*
 2. **Rebuild everything:** `cd cv_src && ./build.sh` — regenerates the web + the 3 PDF bodies from the bib,
    compiles all PDFs, and copies the served EN + 中文 PDFs to `assets/pdf/`. (Or just
    `python3 tools/build_publications.py` to refresh the web + bodies without compiling.)
@@ -155,6 +162,15 @@ git add -A && git commit -m "…" && git push origin main
 ```
 Deploy lags ~1–2 min and the CDN may briefly serve the old copy — verify the live site with a
 cache-busting query, e.g. `https://ymaphys.github.io/publications.html?v=2`.
+
+**If the "pages build and deployment" run fails at the `deploy` step** with the generic *"Deployment
+failed, try again later"* (build job green, deploy red ~10 s in): the content on `main` is fine — it's a
+transient GitHub-side error (githubstatus.com may still show "operational"). Retrigger with an empty commit
+(`git commit --allow-empty -m "Retrigger Pages deploy" && git push`) or re-run from the Actions UI /
+`gh run rerun <id>`; if it fails repeatedly, wait a few minutes between attempts (2026-07-06: two straight
+failures, the third push deployed). The site keeps serving the previous version meanwhile, so nothing is
+broken publicly. Note: `gh run rerun` on the managed Pages workflow can leave a zombie run stuck in
+"queued" that GitHub can't cancel — ignore it; any newer push supersedes it.
 
 ## Don't
 - Don't commit `.history/` (VS Code local history — gitignored).

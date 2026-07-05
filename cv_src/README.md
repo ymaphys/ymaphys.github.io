@@ -17,4 +17,7 @@ Self-contained build inputs for the PDFs in `../assets/pdf/`. No external dir ne
   (`Ma_Yue_CV*.tex`) is the one publication list still hand-written — keep it equal to the bib lead section.
   Okada (TES, PTEP 2016) lives under *Other peer-reviewed journal articles*, not the lead section.
 - Role wording lives in the generator (`ROLES` → `ROLE_L10N`, per language); section headings/intro in `LANG`.
+- **In-press papers:** bib `note = "in press"` (with `journal`+`year`, no volume/pages/doi) renders
+  `…, in press (YEAR)` in both the web list and the PDF bodies; fill the DOI/volume/pages and drop the
+  `note` once published (pending for `Ma:2026muSR`, NIM-A).
 - 日本語 PDFs are built but **not** served (downloads taken down); EN + 中文 are copied to `assets/pdf/`.
