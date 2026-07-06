@@ -49,6 +49,10 @@ Before finishing any edit, check across:
   中文: "第一作者 / 第一作者 & 通讯作者 / 发言人 & 通讯作者 / 主导亮度监测器（PbF₂）研制"; 日本語: "筆頭著者 /
   筆頭著者 & 責任著者 / スポークスパーソン & 責任著者 / 輝度モニターの開発を主導".
 - **Notation & tone:** hypernuclei subscript-Λ, formal academic tone, footer/nav — identical everywhere (see *Conventions*).
+- **Paper titles in hand-written lists** (CV `代表性论文` ×3 languages, `index.html` recent-pubs) must quote the
+  **published title exactly as in the bib** — pre-publication wording can silently survive. 2026-07 example: the
+  ⁴ΛH lifetime paper was still titled "…using a novel production method" on 4 surfaces while the bib/journal had
+  "…using in-flight ⁴He(K⁻,π⁰) reaction" (fixed in 60fdf7c). When a paper gets published, re-grep its title everywhere.
 
 When in doubt, after any change grep the other pages, the generator, and all language `.tex`/PDFs for the same
 string and confirm they agree.
