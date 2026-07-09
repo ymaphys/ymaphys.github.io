@@ -104,6 +104,11 @@ Before editing, find every surface the content appears on. Most content is **mir
   publications = **120+** (bib currently parses 128); Japanese proficiency = **fluent**（流利／流暢）; the RIKEN
   internal fund = **RIKEN 奖励课题**／奨励課題／Incentive Research Projects (never 激励研究基金);
   KAKEN role = 研究分担者 (not 共同研究者); hypertriton = 超氚**核**; fast π⁰ = 快速飞行 π⁰ (zh).
+- **Canonical ORDER (2026-07, all CV languages + cv.html — don't reshuffle):** Signature Achievements =
+  ① ⁴ΛH lifetime (E73) ② Λπ / K̄N(I=1) (Belle) ③ K⁻pp (E15) ④ TES (E62) ⑤ energy-resolved μSR (MLF)
+  ⑥ hard two-photon exchange / PbF₂ luminosity monitor (OLYMPUS, DESY). Selected Publications follow the
+  same achievement order: PLB 845, PLB 873, PRL 130, PLB 789, PRC 102, PRL 128, NIM-A (in press),
+  PRL 118, then PhD-era last (EPJ A 33, PTEP 2015).
 
 ## Languages — downloadable PDFs
 The CV and publication list ship in **two languages**, in `assets/pdf/`. The **CV** PDFs are linked from both `cv.html` and the Home page (`index.html`); the **Publications** PDFs from `publications.html`. (A Japanese set previously shipped but was taken down — links and `*_JP.pdf` files removed.)
