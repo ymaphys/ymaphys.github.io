@@ -103,11 +103,17 @@ Before editing, find every surface the content appears on. Most content is **mir
   lead glass = 铅化玻璃 (zh; 鉛ガラス/lead-glass stay in JP/EN); career span = **twenty years** (二十年/20 年);
   publications = **120+** (bib currently parses 128); Japanese proficiency = **fluent**（流利／流暢）; the RIKEN
   internal fund = **RIKEN 奖励课题**／奨励課題／Incentive Research Projects (never 激励研究基金);
-  KAKEN role = 研究分担者 (not 共同研究者); hypertriton = 超氚**核**; fast π⁰ = 快速飞行 π⁰ (zh).
+  KAKEN role = 研究分担者 (not 共同研究者); hypertriton = 超氚**核**; fast π⁰ = 快速飞行 π⁰ (zh);
+  **μSR FoM wording = "~30%"（约 30%／約 30%）— the author's standing decision** (2026-07-09,
+  reaffirmed at publication): the published abstract quantifies the demonstrated gain as 26% (stated in
+  the paper as a conservative lower bound, limited by prototype resolution & solid angle); the author, as
+  corresponding author, keeps "~30%" on all CV/site surfaces — do **not** "correct" it to 26%. Every
+  citation of this paper carries its journal article type: "Nucl. Instrum. Meth. A 1092, 171842,
+  **Short communication** (2026)" (bib `note` field drives the generated lists; hand-written surfaces match).
 - **Canonical ORDER (2026-07, all CV languages + cv.html — don't reshuffle):** Signature Achievements =
   ① ⁴ΛH lifetime (E73) ② Λπ / K̄N(I=1) (Belle) ③ K⁻pp (E15) ④ TES (E62) ⑤ energy-resolved μSR (MLF)
   ⑥ hard two-photon exchange / PbF₂ luminosity monitor (OLYMPUS, DESY). Selected Publications follow the
-  same achievement order: PLB 845, PLB 873, PRL 130, PLB 789, PRC 102, PRL 128, NIM-A (in press),
+  same achievement order: PLB 845, PLB 873, PRL 130, PLB 789, PRC 102, PRL 128, NIM-A 1092,
   PRL 118, then PhD-era last (EPJ A 33, PTEP 2015).
 
 ## Languages — downloadable PDFs
@@ -160,10 +166,10 @@ all computed from the bib — nothing to bump by hand.
    experiment tag) and `% [YEAR] … — role` comment.
    **Accepted / in-press paper:** give it `journal`, `year` and `note = "in press"` — no `volume`/`pages`/`doi`
    yet. Web + PDFs render `…, in press (YEAR)`; the web title stays **unlinked** until a `doi`/`eprint` exists.
-   When published, fill in `doi`/`volume`/`pages`, drop the `note`, rebuild. *(Currently applies to
-   `Ma:2026muSR`, the NIM-A μSR paper — complete its metadata when NIM-A publishes it, and at the same
-   time re-verify the quoted "~30%" figure-of-merit gain in the CVs/`cv.html`/`research.html` against the
-   final published text.)*
+   When published, fill in `doi`/`volume`/`pages`, drop the `note`, rebuild. *(Done 2026-07-09 for
+   `Ma:2026muSR` → NIM-A **1092**, 171842, doi 10.1016/j.nima.2026.171842; its `note` field is reused for
+   the article type "Short communication", which every citation carries. The final text quantifies the
+   demonstrated FoM gain as 26%; per the author's decision all surfaces keep "~30%" — see Canonical wording.)*
 2. **Rebuild everything:** `cd cv_src && ./build.sh` — regenerates the web + the 3 PDF bodies from the bib,
    compiles all PDFs, and copies the served EN + 中文 PDFs to `assets/pdf/`. (Or just
    `python3 tools/build_publications.py` to refresh the web + bodies without compiling.)
