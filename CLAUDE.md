@@ -97,6 +97,13 @@ Before editing, find every surface the content appears on. Most content is **mir
   bump all four together when publishing a content update.
 - **Contact:** email + ORCID only. **INSPIRE is deliberately NOT linked** — the live INSPIRE author profile
   is Belle-only and hides the lead-author work; ORCID is the canonical ID.
+- **Canonical wording (2026-07, all languages — don't regress):** the E15 K⁻pp signal extraction is
+  **partial-wave analysis**（分波分析／部分波解析）— *not* "polarization analysis"; energy-resolved μSR is
+  「能量分辨**型**」 and its claim is **first proposal AND demonstration**（首次**提出并**实现／世界初の**提案と**実証）;
+  lead glass = 铅化玻璃 (zh; 鉛ガラス/lead-glass stay in JP/EN); career span = **twenty years** (二十年/20 年);
+  publications = **120+** (bib currently parses 128); Japanese proficiency = **fluent**（流利／流暢）; the RIKEN
+  internal fund = **RIKEN 奖励课题**／奨励課題／Incentive Research Projects (never 激励研究基金);
+  KAKEN role = 研究分担者 (not 共同研究者); hypertriton = 超氚**核**; fast π⁰ = 快速飞行 π⁰ (zh).
 
 ## Languages — downloadable PDFs
 The CV and publication list ship in **two languages**, in `assets/pdf/`. The **CV** PDFs are linked from both `cv.html` and the Home page (`index.html`); the **Publications** PDFs from `publications.html`. (A Japanese set previously shipped but was taken down — links and `*_JP.pdf` files removed.)
