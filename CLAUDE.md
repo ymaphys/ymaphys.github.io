@@ -100,7 +100,7 @@ Before editing, find every surface the content appears on. Most content is **mir
 - **Canonical wording (2026-07, all languages — don't regress):** the E15 K⁻pp signal extraction is
   **partial-wave analysis**（分波分析／部分波解析）— *not* "polarization analysis"; energy-resolved μSR is
   「能量分辨**型**」 and its claim is **first proposal AND demonstration**（首次**提出并**实现／世界初の**提案と**実証）;
-  lead glass = 铅化玻璃 (zh; 鉛ガラス/lead-glass stay in JP/EN); career span = **twenty years** (二十年/20 年);
+  lead glass = **铅玻璃** (zh, since 2026-08-17 by the author's ruling — 铅化玻璃 was the 2026-07 term; 鉛ガラス/lead-glass stay in JP/EN); career span = **twenty years** (二十年/20 年);
   publications = **120+** (bib currently parses 128); Japanese proficiency = **fluent**（流利／流暢）; the RIKEN
   internal fund = **RIKEN 奖励课题**／奨励課題／Incentive Research Projects (never 激励研究基金);
   KAKEN role = 研究分担者 (not 共同研究者); hypertriton = 超氚**核**; fast π⁰ = 快速飞行 π⁰ (zh);
@@ -110,6 +110,11 @@ Before editing, find every surface the content appears on. Most content is **mir
   corresponding author, keeps "~30%" on all CV/site surfaces — do **not** "correct" it to 26%. Every
   citation of this paper carries its journal article type: "Nucl. Instrum. Meth. A 1092, 171842,
   **Short communication** (2026)" (bib `note` field drives the generated lists; hand-written surfaces match).
+  **zh spokesperson wording (2026-08-17, author's ruling): 「提案发言人」 is a translationese coinage — the zh
+  CV says 「…实验发言人」 for all three roles（J-PARC E73 超氚核寿命实验发言人／SPring-8 LEPS2 核子短程关联实验发言人／
+  J-PARC 反氘核实验发言人; the "(在研)" tag carries the proposal status）; EN "Proposal spokesperson" and JP
+  「提案スポークスパーソン」 stay as they are (natural in those languages). Committed 2026-08-18 together with the
+  rebuilt PDFs (cv_src/build.sh).
 - **Canonical ORDER (2026-07, all CV languages + cv.html — don't reshuffle):** Signature Achievements =
   ① ⁴ΛH lifetime (E73) ② Λπ / K̄N(I=1) (Belle) ③ K⁻pp (E15) ④ TES (E62) ⑤ energy-resolved μSR (MLF)
   ⑥ hard two-photon exchange / PbF₂ luminosity monitor (OLYMPUS, DESY). Selected Publications follow the
